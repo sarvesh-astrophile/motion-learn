@@ -5,7 +5,7 @@ export default function CSSGeneration() {
   const [state, setState] = useState(false);
 
   return (
-    <div className="example-container ">
+    <div className="example-container min-h-screen">
       <div className="box" data-state={state} />
       <button onClick={() => setState(!state)}>Toggle position</button>
       <style>{`.example-container {

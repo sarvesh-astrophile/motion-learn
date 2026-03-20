@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import CSSGeneration from "../components/motion/react-tutorial/1-css-spring";
+import { ReactDrag } from "../components/motion/react-tutorial/2-react-drag";
 
 export const Route = createFileRoute("/")({ component: App });
 
 function App() {
   return (
-    <main className="h-full w-full">
-      <CSSGeneration />
+    <main className="min-h-screen!">
+      <ReactDrag />
     </main>
   );
 }
