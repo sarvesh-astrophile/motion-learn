@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import EnterAnimation from "../components/motion/react-tutorial/3-enter-animation";
+import ExitAnimation from "../components/motion/react-tutorial/4-exit-animation";
 
 export const Route = createFileRoute("/")({ component: App });
 
 function App() {
   return (
-    <main className="min-h-screen!">
-      <EnterAnimation />
+    <main className="min-h-screen! flex justify-center items-center">
+      <ExitAnimation />
     </main>
   );
 }
