@@ -1,7 +1,20 @@
 import { motion } from "framer-motion";
 
 export function ReactDrag() {
-  return <motion.div drag style={box} />;
+  return (
+    <motion.div
+      drag
+      dragConstraints={{
+        top: -50,
+        bottom: 50,
+        left: -50,
+        right: 50,
+      }}
+      dragMomentum={false}
+      whileDrag={{ scale: 1.1 }}
+      style={box}
+    />
+  );
 }
 
 const box = {
