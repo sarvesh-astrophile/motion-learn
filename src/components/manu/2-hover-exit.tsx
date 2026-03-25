@@ -2,8 +2,7 @@ import Card from "./-components/card";
 
 export default function HoverExit() {
   return (
-    <div>
-      before card
+    <div className="h-screen flex items-center justify-center bg-gray-50 w-full">
       <Card />
     </div>
   );
