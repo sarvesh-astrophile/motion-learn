@@ -7,7 +7,9 @@ export default function CSSGeneration() {
   return (
     <div className="example-container min-h-screen">
       <div className="box" data-state={state} />
-      <button onClick={() => setState(!state)}>Toggle position</button>
+      <button type="button" onClick={() => setState(!state)}>
+        Toggle position
+      </button>
       <style>{`.example-container {
               display: flex;
               flex-direction: column;

@@ -51,6 +51,7 @@ export default function Variants() {
         <div className="p-4 flex items-center justify-between border-b border-gray-50 mb-4">
           <div className="font-bold text-xl truncate">Logo</div>
           <button
+            type="button"
             onClick={() => setIsOpen(!isOpen)}
             className="p-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
           >
