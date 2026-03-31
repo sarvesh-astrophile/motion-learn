@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 interface Card {
   description: string;
@@ -141,14 +142,20 @@ export default function Layouts() {
   return (
     <div className="py-40 w-full relative">
       {currentCard && (
-        <div className="fixed z-10 h-full w-full inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="fixed z-10 h-full w-full inset-0 bg-black/50 backdrop-blur-sm"
+        ></motion.div>
       )}
       {currentCard && (
-        <div
+        <motion.div
+          layoutId={`card-${currentCard.title}`}
           ref={ref}
           className="h-150 fixed inset-0 z-20 m-auto w-80 bg-white rounded-lg ring-1 ring-neutral-200 p-4"
         >
-          <img
+          <motion.img
+            layoutId={`card-image-${currentCard.title}`}
             src={currentCard.src}
             alt={currentCard.title}
             className="w-full aspect-square rounded-xl"
@@ -156,49 +163,85 @@ export default function Layouts() {
           <div className="flex flex-col justify-between items-center">
             <div className="flex justify-between py-4 items-start w-full gap-2">
               <div className="flex flex-col items-start gap-2">
-                <h2 className="font-bold text-sm tracking-tight text-black">
+                <motion.h2
+                  layoutId={`card-title-${currentCard.title}`}
+                  className="font-bold text-sm tracking-tight text-black"
+                >
                   {currentCard.title}
-                </h2>
-                <p className="text-sm text-neutral-500">
+                </motion.h2>
+                <motion.p
+                  layoutId={`card-description-${currentCard.title}`}
+                  className="text-sm text-neutral-500"
+                >
                   {currentCard.description}
-                </p>
+                </motion.p>
               </div>
-              <a
-                href={currentCard.ctaLink}
-                className="px-2 py-1 bg-green-500 rounded-full text-white! text-sm"
-              >
-                {currentCard.ctaText}
-              </a>
+              <motion.div layoutId={`card-cta-${currentCard.title}`}>
+                <a
+                  href={currentCard.ctaLink}
+                  className="px-2 py-1 bg-green-500 rounded-full text-white! text-sm"
+                >
+                  {currentCard.ctaText}
+                </a>
+              </motion.div>
             </div>
-            <div className="h-40 overflow-auto">{currentCard.content()}</div>
+            <motion.div
+              initial={{
+                filter: "blur(10px)",
+                opacity: 0,
+              }}
+              animate={{
+                filter: "blur(0px)",
+                opacity: 1,
+              }}
+              transition={{
+                delay: 0.3,
+              }}
+              className="h-40 overflow-auto mask-[linear-gradient(to_top,transparent,black_50%)]"
+            >
+              {currentCard.content()}
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       )}
       <div className="max-w-lg mx-auto flex flex-col gap-10">
         {cards.map((card) => (
-          <button
+          <motion.button
+            layoutId={`card-${card.title}`}
             onClick={() => setCurrentCard(card)}
             type="button"
             key={card.title}
             className="p-4 rounded-lg cursor-pointer flex justify-between ring-1 ring-neutral-200"
           >
             <div className="flex gap-4 items-center">
-              <img
+              <motion.img
+                layoutId={`card-image-${card.title}`}
                 src={card.src}
                 alt={card.title}
                 className="h-14 aspect-square rounded-lg"
               />
               <div className="flex flex-col items-start gap-2">
-                <h2 className="font-bold text-sm text-black tracking-tight">
+                <motion.h2
+                  layoutId={`card-title-${card.title}`}
+                  className="font-bold text-sm text-black tracking-tight"
+                >
                   {card.title}
-                </h2>
-                <p className="text-sm text-neutral-500">{card.description}</p>
+                </motion.h2>
+                <motion.p
+                  layoutId={`card-description-${card.title}`}
+                  className="text-sm text-neutral-500"
+                >
+                  {card.description}
+                </motion.p>
               </div>
             </div>
-            <div className="px-2 py-1 my-auto bg-green-500 rounded-full text-white text-sm">
+            <motion.div
+              layoutId={`card-cta-${card.title}`}
+              className="px-2 py-1 my-auto bg-green-500 rounded-full text-white text-sm"
+            >
               {card.ctaText}
-            </div>
-          </button>
+            </motion.div>
+          </motion.button>
         ))}
       </div>
     </div>
