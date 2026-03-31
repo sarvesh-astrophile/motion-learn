@@ -25,6 +25,7 @@ export default function Card() {
           <div className="flex items-center justify-center">
             <button
               onClick={() => setOpen(false)}
+              type="button"
               className={cn(
                 "flex items-center gap-1 text-xs mt-4",
                 "px-2 py-1 rounded-md ring-1 ring-gray-950/5",
