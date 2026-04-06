@@ -60,38 +60,50 @@ function RouteComponent() {
               >
                 Name
               </FieldLabel>
-              <InputGroup className="">
-                <InputGroupInput className="text-sm" placeholder="my-api" />
-                <InputGroupAddon
-                  align="inline-end"
-                  className="bg-background px-2 rounded-r-md"
-                >
-                  .workers.dev
-                </InputGroupAddon>
-              </InputGroup>
+
+              <div className="relative group">
+                <div className="absolute -inset-0.5 z-10 rounded-lg opacity-0 group-focus-within:opacity-100 group-focus-within:animate-pulse pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]" />
+                <InputGroup className="relative bg-background z-0 group-focus-within:ring-0!">
+                  {" "}
+                  <InputGroupInput className="text-sm " placeholder="my-api" />
+                  <InputGroupAddon
+                    align="inline-end"
+                    className="bg-background px-2 rounded-r-md"
+                  >
+                    .workers.dev
+                  </InputGroupAddon>
+                </InputGroup>
+              </div>
             </Field>
             <Field>
-              <FieldLabel className="text-sm font-normal dark:text-neutral-300">
+              <FieldLabel
+                htmlFor="starter-template-3d3e"
+                className="text-sm font-normal dark:text-neutral-300"
+              >
                 Starter template
               </FieldLabel>
-              <Select items={templates}>
-                <SelectTrigger>
-                  <SelectValue className="text-sm" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    {templates.map((item) => (
-                      <SelectItem
-                        key={item.value}
-                        value={item.value}
-                        className="text-sm"
-                      >
-                        {item.label}
-                      </SelectItem>
-                    ))}
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+              <div className="relative group">
+                <div className="absolute -inset-0.5 z-10 rounded-lg opacity-0 group-focus-within:opacity-100 group-focus-within:animate-pulse pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]" />
+
+                <Select items={templates}>
+                  <SelectTrigger className=" w-full relative bg-background z-0 group-focus-within:ring-0!">
+                    <SelectValue className="text-sm" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      {templates.map((item) => (
+                        <SelectItem
+                          key={item.value}
+                          value={item.value}
+                          className="text-sm"
+                        >
+                          {item.label}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </div>
             </Field>
             <Field>
               <FieldLabel
@@ -100,22 +112,33 @@ function RouteComponent() {
               >
                 Compatibility date
               </FieldLabel>
-              <InputGroup>
-                <InputGroupInput
-                  className="text-sm"
-                  placeholder="E.g. 2024-01-01"
-                />
-              </InputGroup>
+              <div className="relative group">
+                <div className="absolute -inset-0.5 z-10 rounded-lg opacity-0 group-focus-within:opacity-100 group-focus-within:animate-pulse pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]" />
+
+                <InputGroup className=" w-full relative bg-background z-0 group-focus-within:ring-0!">
+                  <InputGroupInput
+                    className="text-sm"
+                    placeholder="E.g. 2024-01-01"
+                  />
+                </InputGroup>
+              </div>
             </Field>
-            <Field orientation="vertical">
-              <Button type="submit" className="bg-orange-400 text-neutral-50">
-                Deploy
-              </Button>
+            <Field>
+              <div className="relative group">
+                <div className="absolute -inset-0.5 z-10 rounded-lg opacity-0 group-focus-within:opacity-100 group-focus-within:animate-pulse pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]" />
+
+                <Button
+                  type="submit"
+                  className="bg-orange-400 text-neutral-50  w-full relative z-0 group-focus-within:ring-0!"
+                >
+                  Deploy
+                </Button>
+              </div>
             </Field>
           </FieldGroup>
           <div className="mx-auto text-xs font-normal dark:text-neutral-500">
-            Or connect a{" "}
-            <span className="text-orange-400">GitHub repository</span> for CI/CD
+            Or connect a <span className="text-orange-400">Git repository</span>{" "}
+            for CI/CD
           </div>
         </form>
       </div>
