@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import {
   Field,
   FieldDescription,
@@ -21,6 +22,7 @@ import {
   SelectValue,
 } from "#/components/ui/select";
 import { Button } from "#/components/ui/button";
+import { motion } from "motion/react";
 
 const templates = [
   { label: "Select a template", value: null },
@@ -34,6 +36,8 @@ export const Route = createFileRoute("/fancy-cf/")({
 });
 
 function RouteComponent() {
+  const [activeField, setActiveField] = useState<string | null>(null);
+
   return (
     <div className="h-screen flex items-center justify-center">
       <div className="max-w-sm w-full">
@@ -61,7 +65,11 @@ function RouteComponent() {
                 Name
               </FieldLabel>
 
-              <div className="relative group isolate">
+              <motion.div
+                className="relative group isolate"
+                onFocus={() => setActiveField("name")}
+                onBlur={() => setActiveField(null)}
+              >
                 {/* 1. The Dots (Background Layer) */}
                 <div
                   className="absolute -inset-x-20 -inset-y-12 pointer-events-none z-0! opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 mask-[radial-gradient(ellipse_at_center,white,transparent_75%)]"
@@ -82,8 +90,18 @@ function RouteComponent() {
                   </InputGroupAddon>
                 </InputGroup>
                 {/* 3. The Glow/Ring (Top Layer)  */}
-                <div className="absolute -inset-0.5 z-10 rounded-lg opacity-0 group-focus-within:opacity-100 group-focus-within:animate-pulse pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]" />
-              </div>
+                {activeField === "name" && (
+                  <motion.div
+                    layoutId="glow-ring"
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 22,
+                    }}
+                    className="absolute animate-pulse -inset-0.5 z-10 rounded-lg pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]"
+                  />
+                )}
+              </motion.div>
             </Field>
             <Field>
               <FieldLabel
@@ -92,7 +110,11 @@ function RouteComponent() {
               >
                 Starter template
               </FieldLabel>
-              <div className="relative group isolate">
+              <motion.div
+                className="relative group isolate"
+                onFocus={() => setActiveField("template")}
+                onBlur={() => setActiveField(null)}
+              >
                 {/* 1. The Dots (Background Layer) */}
                 <div
                   className="absolute -inset-x-20 -inset-y-12 pointer-events-none z-0! opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 mask-[radial-gradient(ellipse_at_center,white,transparent_75%)]"
@@ -122,8 +144,18 @@ function RouteComponent() {
                   </SelectContent>
                 </Select>
                 {/* 3. The Glow/Ring (Top Layer)  */}
-                <div className="absolute -inset-0.5 z-20! rounded-lg opacity-0 group-focus-within:opacity-100 group-focus-within:animate-pulse pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]" />
-              </div>
+                {activeField === "template" && (
+                  <motion.div
+                    layoutId="glow-ring"
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 22,
+                    }}
+                    className="absolute -inset-0.5 z-20! animate-pulse rounded-lg pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]"
+                  />
+                )}
+              </motion.div>
             </Field>
             <Field>
               <FieldLabel
@@ -132,7 +164,11 @@ function RouteComponent() {
               >
                 Compatibility date
               </FieldLabel>
-              <div className="relative group isolate">
+              <motion.div
+                className="relative group isolate"
+                onFocus={() => setActiveField("compatibility")}
+                onBlur={() => setActiveField(null)}
+              >
                 {/* 1. The Dots (Background Layer) */}
                 <div
                   className="absolute -inset-x-20 -inset-y-12 pointer-events-none z-0! opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 mask-[radial-gradient(ellipse_at_center,white,transparent_75%)]"
@@ -149,11 +185,25 @@ function RouteComponent() {
                   />
                 </InputGroup>
                 {/* 3. The Glow/Ring (Top Layer)  */}
-                <div className="absolute -inset-0.5 z-20! rounded-lg opacity-0 group-focus-within:opacity-100 group-focus-within:animate-pulse pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]" />
-              </div>
+                {activeField === "compatibility" && (
+                  <motion.div
+                    layoutId="glow-ring"
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 22,
+                    }}
+                    className="absolute animate-pulse -inset-0.5 z-20! rounded-lg pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]"
+                  />
+                )}
+              </motion.div>
             </Field>
             <Field>
-              <div className="relative group isolate">
+              <motion.div
+                className="relative group isolate"
+                onFocus={() => setActiveField("submit")}
+                onBlur={() => setActiveField(null)}
+              >
                 {/* 1. The Dots (Background Layer) */}
                 <div
                   className="absolute -inset-x-20 -inset-y-12 pointer-events-none z-0! opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 mask-[radial-gradient(ellipse_at_center,white,transparent_75%)]"
@@ -165,13 +215,23 @@ function RouteComponent() {
                 {/* 2. The Submit Button (Middle Layer)  */}
                 <Button
                   type="submit"
-                  className="bg-orange-400 text-neutral-50  w-full relative z-0 group-focus-within:ring-0!"
+                  className="bg-orange-400 hover:bg-orange-600 text-neutral-50  w-full relative z-0 group-focus-within:ring-0!"
                 >
                   Deploy
                 </Button>
                 {/* 3. The Glow/Ring (Top Layer)  */}
-                <div className="absolute -inset-0.5 z-10 rounded-lg opacity-0 group-focus-within:opacity-100 group-focus-within:animate-pulse pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]" />
-              </div>
+                {activeField === "submit" && (
+                  <motion.div
+                    layoutId="glow-ring"
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 22,
+                    }}
+                    className="absolute -inset-0.5 z-10 animate-pulse rounded-lg pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]"
+                  />
+                )}
+              </motion.div>
             </Field>
           </FieldGroup>
           <div className="mx-auto text-xs font-normal dark:text-neutral-500">
