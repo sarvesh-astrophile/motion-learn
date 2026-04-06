@@ -61,9 +61,17 @@ function RouteComponent() {
                 Name
               </FieldLabel>
 
-              <div className="relative group">
-                <div className="absolute -inset-0.5 z-10 rounded-lg opacity-0 group-focus-within:opacity-100 group-focus-within:animate-pulse pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]" />
-                <InputGroup className="relative bg-background z-0 group-focus-within:ring-0!">
+              <div className="relative group isolate">
+                {/* 1. The Dots (Background Layer) */}
+                <div
+                  className="absolute -inset-x-20 -inset-y-12 pointer-events-none z-0! opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 mask-[radial-gradient(ellipse_at_center,white,transparent_75%)]"
+                  style={{
+                    backgroundImage: `radial-gradient(circle at 1px 1px, #fb923c 1px, transparent 0)`,
+                    backgroundSize: "6px 6px",
+                  }}
+                />
+                {/* 2. The Input Group (Middle Layer)  */}
+                <InputGroup className="relative bg-background! z-0 group-focus-within:ring-0!">
                   {" "}
                   <InputGroupInput className="text-sm " placeholder="my-api" />
                   <InputGroupAddon
@@ -73,6 +81,8 @@ function RouteComponent() {
                     .workers.dev
                   </InputGroupAddon>
                 </InputGroup>
+                {/* 3. The Glow/Ring (Top Layer)  */}
+                <div className="absolute -inset-0.5 z-10 rounded-lg opacity-0 group-focus-within:opacity-100 group-focus-within:animate-pulse pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]" />
               </div>
             </Field>
             <Field>
@@ -82,11 +92,19 @@ function RouteComponent() {
               >
                 Starter template
               </FieldLabel>
-              <div className="relative group">
-                <div className="absolute -inset-0.5 z-10 rounded-lg opacity-0 group-focus-within:opacity-100 group-focus-within:animate-pulse pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]" />
+              <div className="relative group isolate">
+                {/* 1. The Dots (Background Layer) */}
+                <div
+                  className="absolute -inset-x-20 -inset-y-12 pointer-events-none z-0! opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 mask-[radial-gradient(ellipse_at_center,white,transparent_75%)]"
+                  style={{
+                    backgroundImage: `radial-gradient(circle at 1px 1px, #fb923c 1px, transparent 0)`,
+                    backgroundSize: "6px 6px",
+                  }}
+                />
 
+                {/* 2. The Input Group (Middle Layer)  */}
                 <Select items={templates}>
-                  <SelectTrigger className=" w-full relative bg-background z-0 group-focus-within:ring-0!">
+                  <SelectTrigger className="w-full relative bg-background! z-0 group-focus-within:ring-0!">
                     <SelectValue className="text-sm" />
                   </SelectTrigger>
                   <SelectContent>
@@ -103,6 +121,8 @@ function RouteComponent() {
                     </SelectGroup>
                   </SelectContent>
                 </Select>
+                {/* 3. The Glow/Ring (Top Layer)  */}
+                <div className="absolute -inset-0.5 z-20! rounded-lg opacity-0 group-focus-within:opacity-100 group-focus-within:animate-pulse pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]" />
               </div>
             </Field>
             <Field>
@@ -112,27 +132,45 @@ function RouteComponent() {
               >
                 Compatibility date
               </FieldLabel>
-              <div className="relative group">
-                <div className="absolute -inset-0.5 z-10 rounded-lg opacity-0 group-focus-within:opacity-100 group-focus-within:animate-pulse pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]" />
-
-                <InputGroup className=" w-full relative bg-background z-0 group-focus-within:ring-0!">
+              <div className="relative group isolate">
+                {/* 1. The Dots (Background Layer) */}
+                <div
+                  className="absolute -inset-x-20 -inset-y-12 pointer-events-none z-0! opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 mask-[radial-gradient(ellipse_at_center,white,transparent_75%)]"
+                  style={{
+                    backgroundImage: `radial-gradient(circle at 1px 1px, #fb923c 1px, transparent 0)`,
+                    backgroundSize: "6px 6px",
+                  }}
+                />
+                {/* 2. The Input Group (Middle Layer)  */}
+                <InputGroup className="w-full relative bg-background! z-10! group-focus-within:ring-0!">
                   <InputGroupInput
                     className="text-sm"
                     placeholder="E.g. 2024-01-01"
                   />
                 </InputGroup>
+                {/* 3. The Glow/Ring (Top Layer)  */}
+                <div className="absolute -inset-0.5 z-20! rounded-lg opacity-0 group-focus-within:opacity-100 group-focus-within:animate-pulse pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]" />
               </div>
             </Field>
             <Field>
-              <div className="relative group">
-                <div className="absolute -inset-0.5 z-10 rounded-lg opacity-0 group-focus-within:opacity-100 group-focus-within:animate-pulse pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]" />
-
+              <div className="relative group isolate">
+                {/* 1. The Dots (Background Layer) */}
+                <div
+                  className="absolute -inset-x-20 -inset-y-12 pointer-events-none z-0! opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 mask-[radial-gradient(ellipse_at_center,white,transparent_75%)]"
+                  style={{
+                    backgroundImage: `radial-gradient(circle at 1px 1px, #fb923c 1px, transparent 0)`,
+                    backgroundSize: "6px 6px",
+                  }}
+                />
+                {/* 2. The Submit Button (Middle Layer)  */}
                 <Button
                   type="submit"
                   className="bg-orange-400 text-neutral-50  w-full relative z-0 group-focus-within:ring-0!"
                 >
                   Deploy
                 </Button>
+                {/* 3. The Glow/Ring (Top Layer)  */}
+                <div className="absolute -inset-0.5 z-10 rounded-lg opacity-0 group-focus-within:opacity-100 group-focus-within:animate-pulse pointer-events-none ring-1 ring-offset-3 ring-offset-background ring-orange-300! shadow-[0_0_20px_rgba(249,115,22,0.4),0_0_40px_rgba(249,115,22,0.2),inset_0_0_20px_rgba(249,115,22,0.1)]" />
               </div>
             </Field>
           </FieldGroup>
