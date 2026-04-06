@@ -41,7 +41,7 @@ function RouteComponent() {
   return (
     <div className="h-screen flex items-center justify-center">
       <div className="max-w-sm w-full">
-        <form className="flex flex-col gap-5">
+        <form className="flex flex-col gap-5 ring-1 ring-border px-5 py-10 rounded-md">
           <FieldGroup>
             <FieldSet>
               <FieldLegend className="text-2xl! font-medium dark:text-neutral-50">
