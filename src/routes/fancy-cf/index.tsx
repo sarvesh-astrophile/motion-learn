@@ -23,6 +23,7 @@ import {
 } from "#/components/ui/select";
 import { Button } from "#/components/ui/button";
 import { motion } from "motion/react";
+import { Progress, ProgressValue } from "#/components/ui/progress";
 
 const templates = [
   { label: "Select a template", value: null },
@@ -40,8 +41,15 @@ function RouteComponent() {
 
   return (
     <div className="h-screen flex items-center justify-center">
-      <div className="max-w-sm w-full">
-        <form className="flex flex-col gap-5 ring-1 ring-border px-5 py-10 rounded-md">
+      <div className="max-w-sm w-full relative">
+        <div className="absolute -inset-0.5 z-10 bg-background ring-1 ring-border rounded-md flex flex-col gap-5 items-center justify-center">
+          <div className="w-20">
+            <CFlogo />
+          </div>
+          <h2 className="text-xl font-semibold">Deploying...</h2>
+          <Progress value={10} className="w-[60%]" />
+        </div>
+        <form className="relative flex flex-col z-0 gap-5 ring-1 ring-border px-5 py-10 rounded-md">
           <FieldGroup>
             <FieldSet>
               <FieldLegend className="text-2xl! font-medium dark:text-neutral-50">
