@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import SVGLinearGradient from "#/components/manu/tailwindcss/9-2-linear-gradient";
+import GooeyFilters from "#/components/manu/9-gooey-filters";
 
 export const Route = createFileRoute("/")({ component: App });
 
 function App() {
 	return (
 		<main>
-			<SVGLinearGradient />
+			<GooeyFilters />
 		</main>
 	);
 }
