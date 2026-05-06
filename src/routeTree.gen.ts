@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as MotionRouteImport } from './routes/motion'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PortfolioIndexRouteImport } from './routes/portfolio/index'
 import { Route as FancyCfIndexRouteImport } from './routes/fancy-cf/index'
 
+const MotionRoute = MotionRouteImport.update({
+  id: '/motion',
+  path: '/motion',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -38,12 +44,14 @@ const FancyCfIndexRoute = FancyCfIndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/motion': typeof MotionRoute
   '/fancy-cf/': typeof FancyCfIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/motion': typeof MotionRoute
   '/fancy-cf': typeof FancyCfIndexRoute
   '/portfolio': typeof PortfolioIndexRoute
 }
@@ -51,26 +59,35 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/motion': typeof MotionRoute
   '/fancy-cf/': typeof FancyCfIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/fancy-cf/' | '/portfolio/'
+  fullPaths: '/' | '/about' | '/motion' | '/fancy-cf/' | '/portfolio/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/fancy-cf' | '/portfolio'
-  id: '__root__' | '/' | '/about' | '/fancy-cf/' | '/portfolio/'
+  to: '/' | '/about' | '/motion' | '/fancy-cf' | '/portfolio'
+  id: '__root__' | '/' | '/about' | '/motion' | '/fancy-cf/' | '/portfolio/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  MotionRoute: typeof MotionRoute
   FancyCfIndexRoute: typeof FancyCfIndexRoute
   PortfolioIndexRoute: typeof PortfolioIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/motion': {
+      id: '/motion'
+      path: '/motion'
+      fullPath: '/motion'
+      preLoaderRoute: typeof MotionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -105,6 +122,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  MotionRoute: MotionRoute,
   FancyCfIndexRoute: FancyCfIndexRoute,
   PortfolioIndexRoute: PortfolioIndexRoute,
 }

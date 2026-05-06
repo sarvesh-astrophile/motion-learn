@@ -1,13 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import ExitAnimation from "#/components/motion/react-tutorial/4-exit-animation";
 import HoverAndTapAnimation from "#/components/motion/react-tutorial/5-hover-and-tap-animation";
 
-export const Route = createFileRoute("/")({ component: App });
+export const Route = createFileRoute("/motion")({
+	component: RouteComponent,
+});
 
-function App() {
+function RouteComponent() {
 	return (
-		<main>
+		<div className="flex items-center justify-center min-h-screen">
 			<HoverAndTapAnimation />
-		</main>
+		</div>
 	);
 }
